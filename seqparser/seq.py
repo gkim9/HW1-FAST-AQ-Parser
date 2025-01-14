@@ -28,6 +28,4 @@ def reverse_transcribe(seq: str) -> str:
     Write a function that will transcribe an input sequence and reverse
     the sequence
     """
-    # Hey this is my comment
-    # Again!
     return transcribe(seq[::-1])
