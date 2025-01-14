@@ -143,6 +143,7 @@ class FastaParser(Parser):
         seq_name = None
 
         for idx, line in enumerate(f_obj):
+            print(line)
             line = line.strip()
             if line == "":
                 raise ValueError(f"Got an empty line for {f_obj.name} @ line {idx+1}")
@@ -186,3 +187,10 @@ class FastqParser(Parser):
                 # we assume that quality will always be after the seq, so if we get here and read_qual is False then we can just return the tuple
                 yield (seq_name, seq, line)  # line here is the quality string
                 read_qual = True
+
+fasta_parser = FastaParser('data/test.fa')
+for seq_id, seq in fasta_parser:
+    print(seq)
+
+for seq_id, seq, scores in FastqParser('data/test.fq'):
+    print(seq_id, "/////", seq, ",,,,,", scores)
